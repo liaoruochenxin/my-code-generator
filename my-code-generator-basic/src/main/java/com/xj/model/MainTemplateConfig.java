@@ -10,7 +10,7 @@ public class MainTemplateConfig {
     /**
      * 是否生成循环
      */
-    private boolean loop;
+    private Boolean loop;
 
     /**
      * 作者注释
@@ -20,5 +20,5 @@ public class MainTemplateConfig {
     /**
      * 输出信息
      */
-    private String outputText;
+    private String outputText = "Default value";
 }
