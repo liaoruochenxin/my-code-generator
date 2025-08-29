@@ -38,5 +38,21 @@ public class MainGenerator {
         inputFilePath = inputResourcePath + File.separator + "templates/java/model/DataModel.java.ftl";
         outputFilePath = outputBaseJavaPackagePath + "/mode/DataModel.java";
         DynamicFileGenerator.doGenerate(inputFilePath, outputFilePath, meta);
+
+        inputFilePath = inputResourcePath + File.separator + "templates/java/cli/command/ConfigCommand.java.ftl";
+        outputFilePath = outputBaseJavaPackagePath + "/cli/command/ConfigCommand.java";
+        DynamicFileGenerator.doGenerate(inputFilePath, outputFilePath, meta);
+
+        inputFilePath = inputResourcePath + File.separator + "templates/java/cli/command/GenerateCommand.java.ftl";
+        outputFilePath = outputBaseJavaPackagePath + "/cli/command/GenerateCommand.java";
+        DynamicFileGenerator.doGenerate(inputFilePath, outputFilePath, meta);
+
+        inputFilePath = inputResourcePath + File.separator + "templates/java/cli/command/ListCommand.java.ftl";
+        outputFilePath = outputBaseJavaPackagePath + "/cli/command/ListCommand.java";
+        DynamicFileGenerator.doGenerate(inputFilePath, outputFilePath, meta);
+
+        inputFilePath = inputResourcePath + File.separator + "templates/java/cli/CommandExecutor.java.ftl";
+        outputFilePath = outputBaseJavaPackagePath + "/cli/CommandExecutor.java";
+        DynamicFileGenerator.doGenerate(inputFilePath, outputFilePath, meta);
     }
 }
