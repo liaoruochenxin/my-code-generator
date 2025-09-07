@@ -9,19 +9,24 @@ import java.io.IOException;
 
 public class MainGenerator {
     public static void doGenerator(Object model) throws TemplateException, IOException {
-        String projectPath = System.getProperty("user.dir");
-        // 整个项目的根路径
-        File parentFile = new File(projectPath).getParentFile();
-        // 输入路径
-        String inputPath = new File(parentFile, "first-phase-demo/template").getAbsolutePath();
-        String outputPath = projectPath;
-        // 生成静态文件
-        StaticGenerator.copyFilesByHutool(inputPath, outputPath);
-        // 生成动态文件
-        String inputDynamicFilePath = projectPath + File.separator + "src/main/resources/template/MainTemplate.java.ftl";
-        String outputDynamicFilePath = projectPath + File.separator + "src/main/resources/template/MainTemplate.java";
+        String inputRootPath = "D:\\study\\code\\my-code-generator\\first-phase-demo\\template";
+        String outputRootPath = "generated";
 
-        DynamicGenerator.doGenerate(inputDynamicFilePath, outputDynamicFilePath, model);
+        String inputPath;
+        String outputPath;
+        // 生成动态文件
+        inputPath = new File(inputRootPath, "src/main/resources/template/MainTemplate.java.ftl").getAbsolutePath();
+        outputPath = new File(outputRootPath, "src/main/resources/template/MainTemplate.java").getAbsolutePath();
+        DynamicGenerator.doGenerate(inputPath, outputPath, model);
+
+        // 生成静态文件
+        inputPath = new File(inputRootPath, ".gitignore").getAbsolutePath();
+        outputPath = new File(outputRootPath, ".gitignore").getAbsolutePath();
+        StaticGenerator.copyFilesByHutool(inputPath, outputPath);
+
+        inputPath = new File(inputRootPath, "README.md").getAbsolutePath();
+        outputPath = new File(outputRootPath, "README.md").getAbsolutePath();
+        StaticGenerator.copyFilesByHutool(inputPath, outputPath);
     }
 
     public static void main(String[] args) throws TemplateException, IOException {
