@@ -1,6 +1,6 @@
-package "${basePackage}".generator;
+package ${basePackage}.generator;
 
-import "${basePackage}".model.MainTemplateConfig;
+import ${basePackage}.model.DataModel;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -35,14 +35,27 @@ public class DynamicGenerator {
         Template template = configuration.getTemplate(templateName);
 
         // 创建数据模型
-        MainTemplateConfig mainTemplateConfig = (MainTemplateConfig) model;
+        DataModel mainTemplateConfig = (DataModel) model;
 
         mainTemplateConfig.setAuthor(mainTemplateConfig.getAuthor());
-        mainTemplateConfig.setLoop(mainTemplateConfig.getLoop());
+        mainTemplateConfig.setLoop(mainTemplateConfig.isLoop());
         mainTemplateConfig.setOutputText(mainTemplateConfig.getOutputText());
+        // 在创建 FileWriter 之前添加：
+        File outputFile = new File(outputPath);
+        File parentDir = outputFile.getParentFile();
 
-        FileWriter fileWriter = new FileWriter("MainTemplate.java");
-        template.process(mainTemplateConfig, fileWriter);
+        // 如果父目录不存在，则创建
+        if (parentDir != null && !parentDir.exists()) {
+        boolean dirsCreated = parentDir.mkdirs(); // 创建所有不存在的父目录
+        if (!dirsCreated) {
+        throw new IOException("无法创建目录: " + parentDir.getAbsolutePath());
+        }
+        }
 
-        fileWriter.close();
+        // 然后再创建文件写入器
+        try (FileWriter writer = new FileWriter(outputPath)) {
+        template.process(mainTemplateConfig, writer);
+        }
+
     }
+}

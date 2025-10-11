@@ -1,6 +1,6 @@
-package com.xj.maker;
+package ${basePackage};
 
-import com.xj.maker.cli.CommandExecutor;
+import ${basePackage}.cli.CommandExecutor;
 
 public class Main {
     public static void main(String[] args) {

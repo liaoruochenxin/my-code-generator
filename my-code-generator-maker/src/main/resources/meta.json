@@ -6,13 +6,14 @@
   "author": "小蒋",
   "createTime": "2025-8-18",
   "fileConfig": {
-    "inputRootPath": "D:\\study\\code\\my-code-generator\\first-phase-demo\\template",
+    "sourceRootPath": "C:/Users/EDY/Downloads/my-code-generator/my-code-generator/first-phase-demo/template",
+    "inputRootPath": ".source/template",
     "outputRootPath": "generated",
     "type": "dir",
     "files": [
       {
-        "inputPath": "src/main/resources/template/MainTemplate.java.ftl",
-        "outputPath": "src/main/resources/template/MainTemplate.java",
+        "inputPath": "src/com/xj/algorithm/MainTemplate.java.ftl",
+        "outputPath": "src/com/xj/algorithm/MainTemplate.java",
         "type": "file",
         "generateType": "dynamic"
       },

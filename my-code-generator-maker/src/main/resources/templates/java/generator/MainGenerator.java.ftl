@@ -1,6 +1,6 @@
-package "${basePackage}".generator;
+package ${basePackage}.generator;
 
-import "${basePackage}".model.MainTemplateConfig;
+import ${basePackage}.model.DataModel;
 import freemarker.template.TemplateException;
 
 
@@ -16,7 +16,7 @@ public class MainGenerator {
         String outputPath;
         <#list fileConfig.files as fileInfo>
             inputPath = new File(inputRootPath, "${fileInfo.inputPath}").getAbsolutePath();
-            outputPath = new File(outputRootPath, "${fileInfo.outputPath}).getAbsolutePath();
+            outputPath = new File(outputRootPath, "${fileInfo.outputPath}").getAbsolutePath();
             <#if fileInfo.generateType == "dynamic">
                 // 生成动态文件
                 DynamicGenerator.doGenerate(inputPath, outputPath, model);

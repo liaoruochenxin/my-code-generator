@@ -10,3 +10,17 @@
 - 静态文件复制
 #### 25-8-4
 - 动态文件生成
+
+#### maven输出乱码解决
+
+````java
+setupEnvironment(processBuilder.environment());
+
+public static void setupEnvironment(Map<String, String> env) {
+        env.put("JAVA_TOOL_OPTIONS", "-Dfile.encoding=UTF-8");
+        env.put("MAVEN_OPTS", "-Dfile.encoding=UTF-8");
+        env.put("LANG", "en_US.UTF-8");
+        env.put("LC_ALL", "en_US.UTF-8");
+    }
+````
+
