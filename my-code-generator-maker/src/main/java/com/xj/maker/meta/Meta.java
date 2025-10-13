@@ -7,7 +7,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @Data
-public class Meta {
+public class    Meta {
 
     private String name;
     private String description;
