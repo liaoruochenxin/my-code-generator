@@ -18,9 +18,18 @@ import java.util.concurrent.Callable;
 public class GenerateCommand implements Callable<Integer> {
 
     <#list modelConfig.models as modelInfo>
-        @Option(names = {"-${modelInfo.abbr}", "--${modelInfo.fieldName}"}, arity = "0..1", <#if modelInfo.description??>description = "${modelInfo.description} </#if>",
-        interactive = true, echo = true)
-        private ${modelInfo.type} ${modelInfo.fieldName} <#if modelInfo.defaultValue??> = ${modelInfo.defaultValue?c}</#if>;
+        <#if modelInfo.groupKey??>
+            <#list modelInfo.models as modelInfo>
+                @Option(names = {"-${modelInfo.abbr}", "--${modelInfo.fieldName}"}, arity = "0..1", <#if modelInfo.description??>description = "${modelInfo.description} </#if>",
+                interactive = true, echo = true)
+                private ${modelInfo.type} ${modelInfo.fieldName} <#if modelInfo.defaultValue??> = ${modelInfo.defaultValue?c}</#if>;
+            </#list>
+            <#else >
+                @Option(names = {"-${modelInfo.abbr}", "--${modelInfo.fieldName}"}, arity = "0..1", <#if modelInfo.description??>description = "${modelInfo.description} </#if>",
+                interactive = true, echo = true)
+                private ${modelInfo.type} ${modelInfo.fieldName} <#if modelInfo.defaultValue??> = ${modelInfo.defaultValue?c}</#if>;
+        </#if>
+
     </#list>
 
     @Override

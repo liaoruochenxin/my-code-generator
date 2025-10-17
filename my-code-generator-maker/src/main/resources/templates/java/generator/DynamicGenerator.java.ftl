@@ -37,9 +37,9 @@ public class DynamicGenerator {
         // 创建数据模型
         DataModel mainTemplateConfig = (DataModel) model;
 
-        mainTemplateConfig.setAuthor(mainTemplateConfig.getAuthor());
-        mainTemplateConfig.setLoop(mainTemplateConfig.isLoop());
-        mainTemplateConfig.setOutputText(mainTemplateConfig.getOutputText());
+//        mainTemplateConfig.setAuthor(mainTemplateConfig.getAuthor());
+//        mainTemplateConfig.setLoop(mainTemplateConfig.isLoop());
+//        mainTemplateConfig.setOutputText(mainTemplateConfig.getOutputText());
         // 在创建 FileWriter 之前添加：
         File outputFile = new File(outputPath);
         File parentDir = outputFile.getParentFile();
